@@ -1,5 +1,7 @@
 package com.example.kanet.nytimesearch.models;
 
+import android.provider.ContactsContract;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,20 +23,15 @@ public class Article {
         return headline;
     }
 
-    public ArrayList<String> getThumbNails() {
+    public ArrayList<Photo> getThumbNails() {
         return thumbNails;
     }
 
     String webUrl;
     String headline;
-    ArrayList<String> thumbNails;
+    ArrayList<Photo> thumbNails;
     String new_desk;
-
-    public Article(String webUrl, String headline, ArrayList<String> thumbNails) {
-        this.webUrl = webUrl;
-        this.headline = headline;
-        this.thumbNails = thumbNails;
-    }
+    String date;
 
     public Article() {
     }
@@ -48,11 +45,7 @@ public class Article {
             if (jsonObject.has("multimedia")){
                 JSONArray multimediaJSONArray=jsonObject.getJSONArray("multimedia");
                 this.thumbNails=new ArrayList<>();
-                for (int i=0;i<multimediaJSONArray.length();i++){
-                    JSONObject multimediaJson=multimediaJSONArray.getJSONObject(0);
-                    String thumnNail="http://www.nytimes.com/"+multimediaJson.getString("url");
-                    this.thumbNails.add(thumnNail);
-                }
+                this.thumbNails=Photo.fromJSONArray(multimediaJSONArray);
             }else {
                 this.thumbNails=new ArrayList<>();
             }
