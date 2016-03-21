@@ -8,16 +8,7 @@
     tools:context=".activities.SearchActivity">
 
 
-    <ListView
-        android:id="@+id/lv_slidermenu"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:choiceMode="singleChoice"
-        android:divider="@color/list_divider"
-        android:dividerHeight="1dp"
-        android:listSelector="@drawable/list_selector"
-        android:background="@color/list_background"/>
+
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
@@ -39,5 +30,14 @@
 
         </android.support.design.widget.AppBarLayout>
     </FrameLayout>
-
+    <ListView
+        android:id="@+id/lv_slidermenu"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@color/list_divider"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector"
+        android:background="@color/list_background"/>
 </android.support.v4.widget.DrawerLayout>

@@ -6,32 +6,30 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
+import android.webkit.WebView;
 
 import com.example.kanet.nytimesearch.R;
-import com.example.kanet.nytimesearch.adapters.SearchAdapter;
-import com.example.kanet.nytimesearch.models.Article;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FashionStyleFragment extends Fragment {
+public class WebFragment extends Fragment {
 
 
-    public FashionStyleFragment() {
+    public WebFragment() {
         // Required empty public constructor
     }
-    GridView gvData;
-    SearchAdapter mSearchAdapter;
-    ArrayList<Article> articles;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fashion_style, container, false);
+        View rootView=inflater.inflate(R.layout.fragment_web, container, false);
+        WebView wvUrl = (WebView)rootView.findViewById(R.id.wvUrl);
+        wvUrl.getSettings().setJavaScriptEnabled(true);
+        wvUrl.loadUrl("http://www.tutorialspoint.com/android/android_webview_layout.htm");
+        return rootView;
     }
 
 }
